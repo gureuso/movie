@@ -1,0 +1,1 @@
+document.cookie = "logged_in=false";
