@@ -5,7 +5,7 @@ import Layout from '../components/Layout.js';
 
 class Movies extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies';
+    let fetch_uri = 'https://apis.movie.gureuso.me/v1/movies';
 
     const res = await fetch(fetch_uri);
     const data = await res.json();
