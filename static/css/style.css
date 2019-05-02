@@ -9,8 +9,15 @@
   margin: 20px auto;
 }
 
+.theater {
+  margin: auto;
+  text-align: center;
+  width: 1200px;
+}
+
 .theater-box {
   display: inline-block;
-  padding: 50px;
+  padding: 30px;
   margin: 10px;
+  overflow: auto;
 }

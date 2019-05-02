@@ -17,19 +17,23 @@ class Theaters extends React.Component {
 
   create_theaters() {
     const seats = this.props.data.seats;
-    const theater_id = this.props.data.theater_id;
-    const showtime_id = this.props.data.showtime_id;
 
-    let seat_list = []
+    let seat_list = [];
+    let cnt = 0;
     for(let seat of seats) {
       if(seat.selected_seat) {
         seat_list.push(
-          <span class="border border-danger theater-box" data-showtime-id={showtime_id} data-theater-id={theater_id}>{seat.seat_number}</span>
+          <span class="border border-danger theater-box">{seat.seat_number}</span>
         )
       } else {
         seat_list.push(
-          <span class="border border-primary theater-box" data-showtime-id={showtime_id} data-theater-id={theater_id}>{seat.seat_number}</span>
+          <span class="border border-primary theater-box">{seat.seat_number}</span>
         )
+      }
+
+      cnt++;
+      if(cnt % 10 == 0) {
+        seat_list.push(<br/>)
       }
     }
     return (
@@ -40,12 +44,16 @@ class Theaters extends React.Component {
   render() {
     return (
       <Layout title="Theaters">
+        <input type="hidden" id="theater_id" value={this.props.data.theater_id} />
+        <input type="hidden" id="showtime_id" value={this.props.data.showtime_id} />
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
             <h1 class="display-3 text-center">스크린</h1>
           </div>
         </div>
-        {this.create_theaters()}
+        <div class="theater">
+          {this.create_theaters()}
+        </div>
         <script src="/static/js/theaters.js"></script>
       </Layout>
     );

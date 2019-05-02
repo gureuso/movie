@@ -1,8 +1,8 @@
 $(".theater-box").click(function () {
   const seat_number = $(this).text();
   const seat = seat_number.split("-");
-  const showtime_id = $(this).data("showtime-id");
-  const theater_id = $(this).data("theater-id");
+  const showtime_id = $("#showtime_id").val();
+  const theater_id = $("#theater_id").val();
   if($(this).hasClass("border-primary")) {
     if (confirm(seat_number+"자리로 예매하시겠습니까?")) {
       const uri = NODE_API_HOST+"/v1/theater_tickets"
