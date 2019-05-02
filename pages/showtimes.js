@@ -48,9 +48,7 @@ class Showtimes extends React.Component {
       }
       week_list.push(
         <li class="nav-item">
-          <a class={"nav-link "+active} href={url}>
-            {w.weekday}
-          </a>
+          <Link href={url}><a class={"nav-link "+active}>{w.weekday}</a></Link>
         </li>
       );
     }
@@ -66,27 +64,27 @@ class Showtimes extends React.Component {
       for(let showtime of movie.showtimes) {
         if(showtime.start_time < this.props.data.now) {
           showtime_list.push(
-            <a href={"/theaters/"+showtime.theater.id+"/showtimes/"+showtime.id} class="list-group-item list-group-item-action disabled">
+            <Link href={"/theaters/"+showtime.theater.id+"/showtimes/"+showtime.id}><a class="list-group-item list-group-item-action disabled">
               {moment(showtime.start_time, 'YYYYMMDDHHmm').format('HH:mm')} ~ {moment(showtime.end_time, 'YYYYMMDDHHmm').format('HH:mm')}
               &nbsp;/&nbsp;
               {showtime.theater.title} 매진
-            </a>
+            </a></Link>
           );
         } else {
           showtime_list.push(
-            <a href={"/theaters/"+showtime.theater.id+"/showtimes/"+showtime.id} class="list-group-item list-group-item-action">
+            <Link href={"/theaters/"+showtime.theater.id+"/showtimes/"+showtime.id}><a class="list-group-item list-group-item-action">
               {moment(showtime.start_time, 'YYYYMMDDHHmm').format('HH:mm')} ~ {moment(showtime.end_time, 'YYYYMMDDHHmm').format('HH:mm')}
               &nbsp;/&nbsp;
               {showtime.theater.title} {showtime.theater.seat}석
-            </a>
+            </a></Link>
           );
         }
       }
       movie_list.push(
         <div class="list-group">
-          <a href={"/movies/"+movie.id} class="list-group-item list-group-item-action">
+          <Link href={"/movies/"+movie.id}><a class="list-group-item list-group-item-action">
             {movie.title} / {movie.director} / {movie.age_rating}세 이상 관람가
-          </a>
+          </a></Link>
           {showtime_list}
         </div>
       );

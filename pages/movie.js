@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout.js';
@@ -30,7 +31,7 @@ class Movie extends React.Component {
             <li class="list-group-item">관람가: {movie.age_rating}세 이상 관람가</li>
           </ul>
           <br/>
-          <a href={"/cinemas?movie_id="+movie.id} class="btn btn-primary">예매하기</a>
+          <Link href={"/cinemas?movie_id="+movie.id}><a class="btn btn-primary">예매하기</a></Link>
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Header from './Header';
 
@@ -15,8 +16,8 @@ class Layout extends React.Component {
         <Header title={this.props.title}/>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb" style={{margin: 0}}>
-            <li class="breadcrumb-item"><a href="/movies">영화</a></li>
-            <li class="breadcrumb-item"><a href="/showtimes">예매</a></li>
+            <li class="breadcrumb-item"><Link href="/movies"><a>영화</a></Link></li>
+            <li class="breadcrumb-item"><Link href="/showtimes"><a>예매</a></Link></li>
             <li class="ml-auto">
             </li>
           </ol>

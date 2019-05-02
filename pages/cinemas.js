@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout.js';
@@ -29,7 +30,7 @@ class Cinemas extends React.Component {
           <div class="card-body">
             <h4 class="card-title">{cinema.title}</h4>
             <p class="card-text">{cinema.address} {cinema.detail_address}</p>
-            <a href={"/showtimes?cinema_id="+cinema.id+"&movie_id="+this.props.data.movie_id} class="btn btn-primary">예매하기</a>
+            <Link href={"/showtimes?cinema_id="+cinema.id+"&movie_id="+this.props.data.movie_id}><a class="btn btn-primary">예매하기</a></Link>
           </div>
         </div>
       );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 
 import Layout from '../components/Layout.js';
@@ -19,7 +20,7 @@ class Signin extends React.Component {
           <input type="password" class="form-control form-control-lg" name="password" placeholder="Password" />
           <button class="btn btn-lg btn-primary btn-block sign-form-btn">Sign in</button>
           <div id="sign-form-google-btn"></div>
-          <a href="/signup">Signup</a>
+          <Link href="/signup"><a>Signup</a></Link>
         </div>
         <script src="/static/js/signin.js"></script>
       </Layout>

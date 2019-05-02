@@ -14,7 +14,7 @@ class Signup extends React.Component {
           <input type="number" class="form-control form-control-lg" name="phone" placeholder="Phone: '-'제외" required />
           <input type="number" class="form-control form-control-lg" name="age" placeholder="Age" max="100" required />
           <button class="btn btn-lg btn-primary btn-block sign-form-btn">Sign up</button>
-          <a href="/signin">Signin</a>
+          <Link href="/signin"><a>Signin</a></Link>
         </div>
         <script src="/static/js/signup.js"></script>
       </Layout>
