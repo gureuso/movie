@@ -7,7 +7,7 @@ import Error from './_error'
 
 class Movie extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'https://apis.movie.gureuso.me/v1/movies/'+req.query.id;
+    let fetch_uri = 'http://gureuso.me:5001/v1/movies/'+req.query.id;
 
     const res = await fetch(fetch_uri);
     const data = await res.json();

@@ -6,7 +6,7 @@ import Error from './_error'
 
 class Theaters extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'https://apis.movie.gureuso.me/v1/theaters/'+req.query.theater_id+'/showtimes/'+req.query.showtime_id;
+    let fetch_uri = 'http://gureuso.me:5001/v1/theaters/'+req.query.theater_id+'/showtimes/'+req.query.showtime_id;
 
     const res = await fetch(fetch_uri);
     const data = await res.json();

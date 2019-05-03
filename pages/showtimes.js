@@ -8,7 +8,7 @@ import Error from './_error'
 
 class Showtimes extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'https://apis.movie.gureuso.me/v1/showtimes?';
+    let fetch_uri = 'http://gureuso.me:5001/v1/showtimes?';
     if(req.query.date) {
       fetch_uri += 'date='+req.query.date+'&';
     }
