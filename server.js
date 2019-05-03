@@ -29,7 +29,8 @@ app.prepare()
   })
     
   server.get('*', (req, res) => {
-    return handle(req, res)
+    res.redirect('https://' + req.headers.host + req.url);
+    //return handle(req, res)
   })
     
   server.listen(3000, (err) => {
