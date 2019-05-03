@@ -1,0 +1,28 @@
+import React from 'react';
+
+import Header from '../components/Header';
+
+class Error extends React.Component {
+  static getInitialProps({ res, err }) {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+    return { 
+      statusCode: statusCode,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Header title={this.props.statusCode} />
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">{this.props.statusCode}</h1>
+            <p class="lead">{this.props.message}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Error;

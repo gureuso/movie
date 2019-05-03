@@ -3,15 +3,10 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import moment from 'moment';
 
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout';
+import Error from './_error'
 
 class Showtimes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   static async getInitialProps(req) {
     let fetch_uri = 'https://apis.movie.gureuso.me/v1/showtimes?';
     if(req.query.date) {
@@ -28,6 +23,8 @@ class Showtimes extends React.Component {
     const data = await res.json();
 
     return {
+      status_code: data.code / 100,
+      error_message: data.message,
       data: data.data
     };
   }
@@ -93,6 +90,10 @@ class Showtimes extends React.Component {
   }
 
   render() {
+    if(!this.props.data) {
+      return <Error statusCode={this.props.status_code} message={this.props.error_message} />;
+    }
+
     return (
       <Layout title="Showtimes">
         <ul class="nav nav-tabs">

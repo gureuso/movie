@@ -13,7 +13,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div>
-        <Header title={this.props.title}/>
+        <Header title={this.props.title} />
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb" style={{margin: 0}}>
             <li class="breadcrumb-item"><Link href="/movies"><a>영화</a></Link></li>

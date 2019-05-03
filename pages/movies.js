@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout';
+import Error from './_error'
 
 class Movies extends React.Component {
   static async getInitialProps(req) {
@@ -12,6 +13,8 @@ class Movies extends React.Component {
     const data = await res.json();
 
     return {
+      status_code: data.code / 100,
+      error_message: data.message,
       data: data.data
     };
   }
@@ -44,6 +47,10 @@ class Movies extends React.Component {
   }
 
   render() {
+    if(!this.props.data) {
+      return <Error statusCode={this.props.status_code} message={this.props.error_message} />;
+    }
+    
     return (
       <Layout title="Movies">
         <div class="card-columns">

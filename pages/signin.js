@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout';
 
 class Signin extends React.Component {
   render() {

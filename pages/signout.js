@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout';
 
 class Signout extends React.Component {
 render() {
