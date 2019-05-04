@@ -3,4 +3,4 @@ const getCookie = function(name) {
   return value? value[2] : null;
 };
 
-const NODE_API_HOST="http://gureuso.me:5001";
+const NODE_API_HOST="http://apis.movie.gureuso.me";

@@ -7,7 +7,7 @@ import Error from './_error'
 
 class Cinemas extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'http://gureuso.me:5001/v1/cinemas?';
+    let fetch_uri = 'http://apis.movie.gureuso.me/v1/cinemas?';
     if(req.query.movie_id) {
       fetch_uri += 'movie_id='+req.query.movie_id+'&';
     }
