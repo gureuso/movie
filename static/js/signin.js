@@ -7,7 +7,7 @@ $(".sign-form-btn").click(function() {
   $.post(uri, data, function() {
   })
     .done(function() {
-      document.cookie = "logged_in=true";
+      setCookie("logged_in", "true", 1);
       window.location.href = "/";
     })
     .fail(function(data) {

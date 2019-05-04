@@ -1,1 +1,2 @@
-document.cookie = "logged_in=false";
+deleteCookie("logged_in")
+window.location.href = "/"

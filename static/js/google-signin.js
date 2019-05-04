@@ -18,7 +18,7 @@ function onSignIn(googleUser) {
   const id_token = googleUser.getAuthResponse().id_token;
 
   $.post(uri, {id_token: id_token}, function() {
-    document.cookie = "logged_in=true";
+    setCookie("logged_in", "true", 1);
     window.location.replace("/");
   });
 }
