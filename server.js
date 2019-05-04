@@ -29,8 +29,7 @@ app.prepare()
   })
     
   server.get('*', (req, res) => {
-    res.set('x-forwarded-proto', 'https');
-    res.redirect('https://' + req.get('host') + req.url);
+    return handle(req, res)
   })
     
   server.listen(3000, (err) => {
