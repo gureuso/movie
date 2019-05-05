@@ -6,9 +6,8 @@ import Layout from '../components/Layout';
 import Error from './_error'
 
 class Movies extends React.Component {
-  static async getInitialProps(req) {
+  static async getInitialProps() {
     let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies';
-
     const res = await fetch(fetch_uri);
     const data = await res.json();
 
