@@ -53,7 +53,7 @@ class Movies extends React.Component {
     
     return (
       <Layout title="Movies">
-        <div class="card-columns">
+        <div class="card-group">
           {this.create_movies()}
         </div>
       </Layout>
