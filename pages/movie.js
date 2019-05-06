@@ -3,7 +3,7 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout';
-import Error from './_error'
+import Error from './_error';
 
 class Movie extends React.Component {
   static async getInitialProps(req) {

@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import moment from 'moment';
 
 import Layout from '../components/Layout';
-import Error from './_error'
+import Error from './_error';
 
 class Showtimes extends React.Component {
   static async getInitialProps(req) {

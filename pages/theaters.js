@@ -2,7 +2,7 @@ import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout';
-import Error from './_error'
+import Error from './_error';
 
 class Theaters extends React.Component {
   static async getInitialProps(req) {
