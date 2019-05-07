@@ -9,6 +9,10 @@
   margin: 20px auto;
 }
 
+.google-sign-form-btn {
+  width: 100%;
+}
+
 .theater {
   margin: auto;
   text-align: center;

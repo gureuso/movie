@@ -1,28 +1,81 @@
 import React from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
+import axios from "axios";
+import { GoogleLogin } from 'react-google-login';
 
 import Layout from '../components/Layout';
 
 class Signin extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
+
+  handleEmailChange(event) {
+    this.setState({email: event.target.value});
+  }
+
+  handlePasswordChange(event) {
+    this.setState({password: event.target.value});
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+
+    const uri = 'http://apis.movie.gureuso.me/v1/signin';
+    let formData = new FormData();
+    formData.append('email', this.state.email);
+    formData.append('password', this.state.password);
+
+    await axios({
+      method: 'post',
+      url: uri,
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then(function (response) {
+          console.log(response.data.data);
+      })
+      .catch(function (error) {
+        const status = error.response.status;
+        if(status==400) {
+          alert('bad request.');
+        } else if(status==404) {
+          alert('아이디 또는 비밀번호가 잘못되었습니다.');
+        }
+      });
+  }
+
+  responseGoogle(response) {
+    console.log(response.profileObj);
+  }
+
   render() {
     return (
       <Layout title="Signin">
-        <Head>
-          <meta name="google-signin-scope" content="profile email" />
-          <meta name="google-signin-client_id" content="485933391623-5806uemc2ksqf7q7gjoturtqhl0110k4.apps.googleusercontent.com" />
-          <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>  
-          <script src="/static/js/google-signin.js"></script>
-        </Head>
-        <div class="sign-form">
+        <form onSubmit={this.handleSubmit} class="sign-form">
           <img src="/static/images/3.png" class="sign-form-img" />
-          <input type="email" class="form-control form-control-lg" name="email" placeholder="Email" />
-          <input type="password" class="form-control form-control-lg" name="password" placeholder="Password" />
-          <button class="btn btn-lg btn-primary btn-block sign-form-btn">Sign in</button>
-          <div id="sign-form-google-btn"></div>
+          <input type="email" onChange={this.handleEmailChange} class="form-control form-control-lg" name="email" placeholder="Email" required />
+          <input type="password" onChange={this.handlePasswordChange} class="form-control form-control-lg" name="password" placeholder="Password" required />
+          <button class="btn btn-lg btn-primary btn-block sign-form-btn" type="submit">Sign in</button>
+          <GoogleLogin
+            clientId="485933391623-5806uemc2ksqf7q7gjoturtqhl0110k4.apps.googleusercontent.com"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            className="google-sign-form-btn"
+          />
+          <br/>
           <Link href="/signup"><a>Signup</a></Link>
-        </div>
-        <script src="/static/js/signin.js"></script>
+        </form>
       </Layout>
     );
   }
