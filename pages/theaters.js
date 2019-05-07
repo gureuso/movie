@@ -16,6 +16,12 @@ class Theaters extends React.Component {
       data: data.data
     };
   }
+  
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.src = "/static/js/theaters.js";
+    document.body.appendChild(script);
+  }
 
   create_theaters() {
     const seats = this.props.data.seats;
@@ -60,7 +66,6 @@ class Theaters extends React.Component {
         <div class="theater">
           {this.create_theaters()}
         </div>
-        <script src="/static/js/theaters.js"></script>
       </div>
     );
   }
