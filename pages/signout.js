@@ -1,14 +1,15 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
-
 class Signout extends React.Component {
-render() {
+  componentDidMount() {
+    deleteCookie("logged_in")
+    window.location.href = "/signin"
+  }
+
+  render() {
     return (
-      <Layout title="Signout">
-        <script src="/static/js/google-signout.js"></script>
-        <script src="/static/js/signout.js"></script>
-      </Layout>
+      <div>
+      </div>
     );
   }
 }

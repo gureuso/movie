@@ -1,7 +1,6 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../components/Layout';
 import Error from './_error';
 
 class Theaters extends React.Component {
@@ -50,7 +49,7 @@ class Theaters extends React.Component {
     }
 
     return (
-      <Layout title="Theaters">
+      <div>
         <input type="hidden" id="theater_id" value={this.props.data.theater_id} />
         <input type="hidden" id="showtime_id" value={this.props.data.showtime_id} />
         <div class="jumbotron jumbotron-fluid">
@@ -62,7 +61,7 @@ class Theaters extends React.Component {
           {this.create_theaters()}
         </div>
         <script src="/static/js/theaters.js"></script>
-      </Layout>
+      </div>
     );
   }
 }

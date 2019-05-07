@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../components/Layout';
 import Error from './_error';
 
 class Cinemas extends React.Component {
@@ -47,11 +46,9 @@ class Cinemas extends React.Component {
     }
 
     return (
-      <Layout title="Cinemas">
-        <div class="card-columns">
-          {this.create_cinemas()}
-        </div>
-      </Layout>
+      <div class="card-columns">
+        {this.create_cinemas()}
+      </div>
     );
   }
 }

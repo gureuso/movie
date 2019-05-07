@@ -3,7 +3,6 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import moment from 'moment';
 
-import Layout from '../components/Layout';
 import Error from './_error';
 
 class Showtimes extends React.Component {
@@ -95,12 +94,12 @@ class Showtimes extends React.Component {
     }
 
     return (
-      <Layout title="Showtimes">
+      <div>
         <ul class="nav nav-tabs">
           {this.create_week()}
         </ul>
         {this.create_movies()}
-      </Layout>
+      </div>
     );
   };
 }
