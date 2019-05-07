@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
 import Error from './_error';
+import MovieComponent from '../components/Movie';
 
 class Movies extends React.Component {
   static async getInitialProps() {
@@ -23,22 +23,8 @@ class Movies extends React.Component {
     let movie_list = []
     for(let movie of movies) {
       movie_list.push(
-        <div class="card">
-          <img class="card-img-top" src={movie.poster_url} alt="poster image" />
-          <div class="card-body">
-            <h4 class="card-title">
-              <Link href={"/movies/"+movie.id}><a style={{color: "#212529"}}>{movie.title}</a></Link>
-            </h4>
-            <p class="card-text">{movie.description}</p>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">감독: {movie.director}</li>
-              <li class="list-group-item">러닝타임: {movie.running_time}분</li>
-              <li class="list-group-item">관람가: {movie.age_rating}세 이상 관람가</li>
-            </ul>
-            <br/>
-            <Link href={"/cinemas?movie_id="+movie.id}><a class="btn btn-primary">예매하기</a></Link>
-          </div>
-        </div>
+        <MovieComponent id={movie.id} title={movie.title} poster_url={movie.poster_url} description={movie.description} director={movie.director} 
+        running_time={movie.running_time} age_rating={movie.age_rating} />
       );
     }
     return movie_list;
