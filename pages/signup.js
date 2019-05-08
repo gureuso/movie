@@ -45,7 +45,7 @@ class Signup extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const uri = 'http://apis.movie.gureuso.me/v1/signup';
+    const uri = 'http://apis.movie.gureuso.me/v1/users/signup';
     let formData = new FormData();
     formData.append('email', this.state.email);
     formData.append('password', this.state.password);

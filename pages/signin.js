@@ -28,7 +28,7 @@ class Signin extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const uri = 'http://apis.movie.gureuso.me/v1/signin';
+    const uri = 'http://apis.movie.gureuso.me/v1/users/signin';
     let formData = new FormData();
     formData.append('email', this.state.email);
     formData.append('password', this.state.password);
@@ -38,10 +38,11 @@ class Signin extends React.Component {
       url: uri,
       data: formData,
       config: { headers: {'Content-Type': 'multipart/form-data' }}
-      })
+    })
       .then(function (response) {
-        console.log(response.data.data);
+        const data = response.data.data;
         setCookie('logged_in', 'true', 1);
+        setCookie('token', data.token, 1);
         window.location.href = "/"
       })
       .catch(function (error) {
@@ -55,9 +56,29 @@ class Signin extends React.Component {
   }
 
   responseGoogle(response) {
-    console.log(response.profileObj);
-    setCookie('logged_in', 'true', 1);
-    window.location.href = "/"
+    const data = response.profileObj;
+    const tokenId = response.tokenId;
+    
+    let formData = new FormData();
+    formData.append('id_token', tokenId);
+
+    const uri = 'http://apis.movie.gureuso.me/v1/users/callback';
+    axios({
+      method: 'post',
+      url: uri,
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+    })
+      .then(function (response) {
+        const data = response.data.data;
+        setCookie('logged_in', 'true', 1);
+        setCookie('token', data.token, 1);
+        window.location.href = "/"
+      })
+      .catch(function (error) {
+        const status = error.response.status;
+        console.log(status)
+      });
   }
 
   render() {
@@ -71,7 +92,7 @@ class Signin extends React.Component {
           clientId="485933391623-5806uemc2ksqf7q7gjoturtqhl0110k4.apps.googleusercontent.com"
           onSuccess={this.responseGoogle}
           onFailure={this.responseGoogle}
-          cookiePolicy={'single_host_origin'}
+          cookiePolicy={"single_host_origin"}
           className="google-sign-form-btn"
         />
         <br/>
