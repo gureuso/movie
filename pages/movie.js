@@ -34,8 +34,10 @@ class Movie extends React.Component {
     return (
       <div>
         <style global jsx>{`
-          .card {
-            width: 450px;
+          @media all and (min-width: 501px) {
+            .card {
+              width: 450px;
+            }
           }
         `}</style>
         {this.create_movie()}

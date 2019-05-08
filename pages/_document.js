@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Cookies from 'universal-cookie';
 
 class MyDocument extends Document {
-  static getInitialProps(req) {
-    const cookies = new Cookies(req.req.headers.cookie);
+  static getInitialProps(ctx) {
+    const cookies = new Cookies(ctx.req.headers.cookie);
     return {
       cookies
     }
