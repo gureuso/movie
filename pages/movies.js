@@ -23,8 +23,7 @@ class Movies extends React.Component {
     let movie_list = []
     for(let movie of movies) {
       movie_list.push(
-        <MovieComponent id={movie.id} title={movie.title} poster_url={movie.poster_url} description={movie.description} director={movie.director} 
-        running_time={movie.running_time} age_rating={movie.age_rating} />
+        <MovieComponent movie={movie} />
       );
     }
     return movie_list;

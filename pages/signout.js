@@ -3,7 +3,7 @@ import React from 'react';
 class Signout extends React.Component {
   componentDidMount() {
     deleteCookie("logged_in")
-    window.location.href = "/signin"
+    window.location.href = "/"
   }
 
   render() {

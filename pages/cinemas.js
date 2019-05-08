@@ -23,6 +23,7 @@ class Cinemas extends React.Component {
 
   create_cinemas() {
     const cinemas = this.props.data.cinemas;
+    const movie_id = this.props.data.movie_id
 
     let cinema_list = [];
     for(let cinema of cinemas) {
@@ -32,7 +33,7 @@ class Cinemas extends React.Component {
           <div class="card-body">
             <h4 class="card-title">{cinema.title}</h4>
             <p class="card-text">{cinema.address} {cinema.detail_address}</p>
-            <Link href={"/showtimes?cinema_id="+cinema.id+"&movie_id="+this.props.data.movie_id}><a class="btn btn-primary">예매하기</a></Link>
+            <Link href={{pathname: '/showtimes', query: {cinema_id: cinema.id, movie_id: movie_id}}}><a class="btn btn-primary">예매하기</a></Link>
           </div>
         </div>
       );
