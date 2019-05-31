@@ -58,7 +58,7 @@ class Showtimes extends React.Component {
     for(let movie of movies) {
       let showtime_list = [];
       for(let showtime of movie.showtimes) {
-        if(showtime.start_time < this.props.data.now) {
+        if(showtime.start_time < moment().format('YYYYMMDDHHmm')) {
           showtime_list.push(
             <Link href={"/theaters/"+showtime.theater.id+"/showtimes/"+showtime.id}><a class="list-group-item list-group-item-action disabled">
               {moment(showtime.start_time, 'YYYYMMDDHHmm').format('HH:mm')} ~ {moment(showtime.end_time, 'YYYYMMDDHHmm').format('HH:mm')}
