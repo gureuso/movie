@@ -2,6 +2,7 @@
 node_modules/
 .next
 .npm
+config.json
 
 # mac
 .DS_Store
@@ -15,4 +16,3 @@ Thumbs.db
 # vim
 *.swp
 *.swo
-

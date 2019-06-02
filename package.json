@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "start": "APP_MODE=production next build & node server.js",
+    "start": "node server.js",
     "build": "next build"
   },
   "keywords": [],

@@ -1,7 +1,10 @@
 const express = require('express')
 const next = require('next')
-    
-const dev = process.env.APP_MODE !== 'production'
+const fs = require('fs')
+
+let config = JSON.parse(fs.readFileSync('config.json'))
+
+const dev = config.APP_MODE !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
     
