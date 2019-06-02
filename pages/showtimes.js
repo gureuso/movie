@@ -38,9 +38,12 @@ class Showtimes extends React.Component {
       if(w.date == selected.date) {
         active='active';
       }
-      let url = "/showtimes?date="+w.date+"&cinema_id="+selected.cinema_id;
+      let url = "/showtimes?date="+w.date;
       if(selected.movie_id) {
         url += '&movie_id='+selected.movie_id;
+      }
+      if(selected.cinema_id) {
+        url += '&cinema_id='+selected.cinema_id;
       }
       week_list.push(
         <li class="nav-item">
