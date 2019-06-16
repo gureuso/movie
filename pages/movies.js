@@ -1,14 +1,16 @@
-import React from 'react';
-import fetch from 'isomorphic-unfetch';
+import React from 'react'
+import fetch from 'isomorphic-unfetch'
 
-import Error from './_error';
-import MovieComponent from '../components/Movie';
+import Error from './_error'
+import Header from '../components/layout/Header'
+import Nav from '../components/layout/Nav'
+import Movie from '../components/Movie'
 
-class Movies extends React.Component {
+class MoviesPage extends React.Component {
   static async getInitialProps() {
-    let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies';
-    const res = await fetch(fetch_uri);
-    const data = await res.json();
+    let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies'
+    const res = await fetch(fetch_uri)
+    const data = await res.json()
 
     return {
       status_code: data.code / 100,
@@ -18,28 +20,32 @@ class Movies extends React.Component {
   }
 
   create_movies() {
-    const movies = this.props.data.movies;
+    const movies = this.props.data.movies
 
     let movie_list = []
     for(let movie of movies) {
       movie_list.push(
-        <MovieComponent movie={movie} />
-      );
+        <Movie key={movie.id} movie={movie}/>
+      )
     }
-    return movie_list;
+    return movie_list
   }
 
   render() {
     if(!this.props.data) {
-      return <Error statusCode={this.props.status_code} message={this.props.error_message} />;
+      return <Error statusCode={this.props.status_code} message={this.props.error_message} />
     }
     
     return (
-      <div class="card-group">
-        {this.create_movies()}
+      <div>
+        <Header title="movies"/>
+        <Nav/>
+        <div className="card-group">
+          {this.create_movies()}
+        </div>
       </div>
     );
   }
 }
 
-export default Movies
+export default MoviesPage

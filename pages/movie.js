@@ -1,15 +1,17 @@
-import React from 'react';
-import fetch from 'isomorphic-unfetch';
+import React from 'react'
+import fetch from 'isomorphic-unfetch'
 
-import Error from './_error';
-import MovieComponent from '../components/Movie';
+import Error from './_error'
+import Movie from '../components/Movie'
+import Header from '../components/layout/Header'
+import Nav from '../components/layout/Nav'
 
-class Movie extends React.Component {
+class MoviePage extends React.Component {
   static async getInitialProps(req) {
-    let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies/'+req.query.id;
+    let fetch_uri = 'http://apis.movie.gureuso.me/v1/movies/'+req.query.id
 
-    const res = await fetch(fetch_uri);
-    const data = await res.json();
+    const res = await fetch(fetch_uri)
+    const data = await res.json()
 
     return {
       status_code: data.code / 100,
@@ -19,20 +21,22 @@ class Movie extends React.Component {
   }
 
   create_movie() {
-    const movie = this.props.data.movie;
+    const movie = this.props.data.movie
 
     return (
-      <MovieComponent movie={movie} />
+      <Movie movie={movie}/>
     );
   }
 
   render() {
     if(!this.props.data) {
-      return <Error statusCode={this.props.status_code} message={this.props.error_message} />;
+      return <Error statusCode={this.props.status_code} message={this.props.error_message} />
     }
 
     return (
       <div>
+        <Header title="signin"/>
+        <Nav/>
         <style global jsx>{`
           @media all and (min-width: 501px) {
             .card {
@@ -46,4 +50,4 @@ class Movie extends React.Component {
   }
 }
 
-export default Movie
+export default MoviePage

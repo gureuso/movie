@@ -1,6 +1,11 @@
 import React from 'react';
+import Router from 'next/router';
 
-class Index extends React.Component {
+class IndexPage extends React.Component {
+  componentDidMount() {
+    Router.push('/showtimes');
+  }
+
   render() {
     return (
       <div></div>
@@ -8,4 +13,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index
+export default IndexPage

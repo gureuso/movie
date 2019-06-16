@@ -1,9 +1,10 @@
 import React from 'react';
+import Router from 'next/router'
 
-class Signout extends React.Component {
+class SignoutPage extends React.Component {
   componentDidMount() {
-    deleteCookie("logged_in")
-    window.location.href = "/"
+    localStorage.setItem('token', '')
+    Router.push('/showtimes')
   }
 
   render() {
@@ -14,4 +15,4 @@ class Signout extends React.Component {
   }
 }
 
-export default Signout
+export default SignoutPage
