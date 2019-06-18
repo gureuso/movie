@@ -98,10 +98,6 @@ class ShowtimesPage extends React.Component {
   }
 
   render() {
-    if(!this.props.data) {
-      return <Error statusCode={this.props.status_code} message={this.props.error_message} />
-    }
-
     return (
       <div>
         <Header title="showtimes"/>
@@ -111,8 +107,8 @@ class ShowtimesPage extends React.Component {
         </ul>
         {this.create_movies()}
       </div>
-    );
-  };
+    )
+  }
 }
 
 export default ShowtimesPage
