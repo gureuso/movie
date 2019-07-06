@@ -8,7 +8,7 @@ const dev = config.APP_MODE !== 'production'
 console.log('> is_dev: '+dev)
 const app = next({ dev })
 const handle = app.getRequestHandler()
-    
+
 app.prepare()
 .then(() => {
   const server = express()
